@@ -26,12 +26,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <memory>
 #include <string>
 
+// this used to define a bare DLLEXPORT, which collides with usvfs/dllimport.h:
+// both headers are installed and end up in the same translation unit, and
+// whichever is included second wins. usvfs guards its definition with #ifndef,
+// this one did not, so it silently took over -- and under
+// MO2_ARCHIVE_BUILD_STATIC it expands to nothing, which would strip the import
+// attribute from any usvfs declaration that follows.
+//
+// note that guarding this with #ifndef would not be a fix: if usvfs's header
+// came first while *building* archive, CreateArchive() would be declared
+// dllimport instead of dllexport and the DLL would export nothing. The macro
+// needs its own name.
 #if defined(MO2_ARCHIVE_BUILD_STATIC)
-#define DLLEXPORT
+#define ARCHIVE_DLLEXPORT
 #elif defined(MO2_ARCHIVE_BUILD_EXPORT)
-#define DLLEXPORT _declspec(dllexport)
+#define ARCHIVE_DLLEXPORT __declspec(dllexport)
 #else
-#define DLLEXPORT _declspec(dllimport)
+#define ARCHIVE_DLLEXPORT __declspec(dllimport)
 #endif
 
 class FileData
@@ -267,6 +278,6 @@ public:
  *
  * @return a pointer to a new Archive object that can be used to manipulate archives.
  */
-DLLEXPORT std::unique_ptr<Archive> CreateArchive();
+ARCHIVE_DLLEXPORT std::unique_ptr<Archive> CreateArchive();
 
 #endif  // ARCHIVE_H
