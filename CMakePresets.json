@@ -39,10 +39,10 @@
           "value": "OFF"
         }
       },
-      "generator": "Visual Studio 17 2022",
+      "generator": "Visual Studio 18 2026",
       "inherits": ["cmake-dev", "vcpkg"],
-      "name": "vs2022-windows-static",
-      "toolset": "v143"
+      "name": "vs2026-windows-static",
+      "toolset": "v145"
     },
     {
       "cacheVariables": {
@@ -55,19 +55,19 @@
           "value": "x64-windows"
         }
       },
-      "inherits": "vs2022-windows-static",
-      "name": "vs2022-windows-shared"
+      "inherits": "vs2026-windows-static",
+      "name": "vs2026-windows-shared"
     },
     {
-      "inherits": "vs2022-windows-shared",
-      "name": "vs2022-windows"
+      "inherits": "vs2026-windows-shared",
+      "name": "vs2026-windows"
     }
   ],
   "buildPresets": [
     {
-      "name": "vs2022-windows",
+      "name": "vs2026-windows",
       "resolvePackageReferences": "on",
-      "configurePreset": "vs2022-windows"
+      "configurePreset": "vs2026-windows"
     }
   ],
   "version": 4

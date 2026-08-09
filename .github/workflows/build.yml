@@ -24,7 +24,7 @@ jobs:
       - name: Configure Archive build
         shell: pwsh
         run: |
-          cmake --preset vs2022-windows-shared "-DCMAKE_INSTALL_PREFIX=install"
+          cmake --preset vs2026-windows-shared "-DCMAKE_INSTALL_PREFIX=install"
 
       - name: Build Archive
         run: cmake --build vsbuild --config RelWithDebInfo
