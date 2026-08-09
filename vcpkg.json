@@ -10,7 +10,7 @@
       {
         "kind": "git",
         "baseline": "1316300c059f9dc6eddbdd19c57d3415a1779fee",
-        "repository": "https://github.com/ModOrganizer2/vcpkg-registry",
+        "repository": "https://github.com/mo2-modern/vcpkg-registry",
         "packages": ["7zip"]
       }
     ]
