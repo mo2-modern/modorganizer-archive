@@ -133,7 +133,7 @@ private:
   ALibrary m_Library;
   std::wstring m_ArchiveName;  // TBH I don't think this is required
   CComPtr<IInArchive> m_ArchivePtr;
-  CArchiveExtractCallback* m_ExtractCallback;
+  CArchiveExtractCallback* m_ExtractCallback{};
 
   LogCallback m_LogCallback;
   PasswordCallback m_PasswordCallback;
@@ -144,12 +144,12 @@ private:
 
   struct ArchiveFormatInfo
   {
-    CLSID m_ClassID;
+    CLSID m_ClassID{};
     std::wstring m_Name;
     std::vector<std::string> m_Signatures;
     std::wstring m_Extensions;
     std::wstring m_AdditionalExtensions;
-    UInt32 m_SignatureOffset;
+    UInt32 m_SignatureOffset{};
   };
 
   typedef std::vector<ArchiveFormatInfo> Formats;

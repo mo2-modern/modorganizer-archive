@@ -95,7 +95,7 @@ private:
    * If there are errors writing to one of the files, this might or might
    * not match what was actually written to another of the files
    */
-  UInt64 m_ProcessedSize;
+  UInt64 m_ProcessedSize{};
 
   /** All the files opened for this 'stream'
    *

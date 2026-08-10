@@ -85,7 +85,7 @@ private:
 
   bool m_Valid;
   std::filesystem::path m_Path;
-  BY_HANDLE_FILE_INFORMATION m_FileInfo;
+  BY_HANDLE_FILE_INFORMATION m_FileInfo{};
 };
 
 class FileBase
