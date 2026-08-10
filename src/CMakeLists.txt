@@ -4,7 +4,7 @@ find_package(7zip CONFIG REQUIRED)
 
 add_library(archive)
 
-set_target_properties(archive PROPERTIES CXX_STANDARD 20)
+set_target_properties(archive PROPERTIES CXX_STANDARD 23)
 target_link_libraries(archive PRIVATE 7zip::7zip)
 
 target_sources(archive
